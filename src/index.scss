@@ -1,0 +1,14 @@
+// component
+@import './assets/scss/components/HomeHeader';
+
+// pages (trong home, component, templates.css có sử dụng biến mixin thì import vào file đó )
+@import './assets/scss/pages/cart';
+@import './assets/scss/pages/detail';
+@import './assets/scss/pages/home';
+@import './assets/scss/pages/login';
+@import './assets/scss/pages/profile';
+@import './assets/scss/pages/register';
+@import './assets/scss/pages/search';
+
+// templates
+@import './assets/scss/templates/HomeTemplates';
