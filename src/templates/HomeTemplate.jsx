@@ -1,13 +1,15 @@
 import React from 'react'
-import HomeFooter from '../Components/HomeFooter'
+import FooterHome from '../Components/FooterHome'
 import {Outlet} from 'react-router-dom'
-import HomeHeader from '../Components/HomeHeader'
+import HeaderHome from '../Components/HeaderHome'
 export default function HomeTemplate() {
   return (
-	<div>
-		<HomeHeader/>
+	<div >
+		<HeaderHome/>
+		<div style={{minHeight:700}}>
 		<Outlet></Outlet>
-		<HomeFooter/>
+		</div>
+		<FooterHome/>
 	</div>
   )
 }
