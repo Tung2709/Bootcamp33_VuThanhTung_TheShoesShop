@@ -31,7 +31,11 @@ export const loginApi = (userLogin) => {
 	return async dispatch => {
 		const result = await http.post('/api/Users/signin', userLogin)
 		const action = loginAction(result.data.content)
-		dispatch(action)
+		await dispatch(action)
+		// dispatch lại logic của 1 action async
+		// thay vì sau khi đăng nhập xong gọi api get profile thì logic đó mình đã code rồi => bây giờ chỉ cần dùng dispatch để gọi lại
+		const actionGetProfile = getProfileApi()
+		dispatch(actionGetProfile)
 		// sau khi đăng nhập thành công thì lưu vào localStorage và cookie
 		setting.setStorageJSON(USER_LOGIN,result.data.content)
 		setting.setStorage(ACCESS_TOKEN,result.data.content.accessToken)
@@ -39,6 +43,7 @@ export const loginApi = (userLogin) => {
 	}
 }
 // cách 1 truyền navigate để chuyển hướng trang khi chưa đăng nhập
+// cách 2 cấu hình bên trong interceptor
 export const getProfileApi = () => {
 	return async dispatch =>{
 		// try{
@@ -54,4 +59,19 @@ export const getProfileApi = () => {
 	}
 }
 
-// cách 2 cấu hình bên trong interceptor
+export const loginFacebook=(tokenFBApp)=>{
+	return async dispatch =>{
+		const result = await http.post('/api/Users/facebooklogin',{facebookToken: tokenFBApp});
+		const action = loginAction(result.data.content)
+		await dispatch(action)
+		// dispatch lại logic của 1 action async
+		// thay vì sau khi đăng nhập xong gọi api get profile thì logic đó mình đã code rồi => bây giờ chỉ cần dùng dispatch để gọi lại
+		const actionGetProfile = getProfileApi()
+		dispatch(actionGetProfile)
+		// sau khi đăng nhập thành công thì lưu vào localStorage và cookie
+		setting.setStorageJSON(USER_LOGIN,result.data.content)
+		setting.setStorage(ACCESS_TOKEN,result.data.content.accessToken)
+		setting.setCookie(ACCESS_TOKEN,result.data.content.accessToken,30)
+	}
+}
+

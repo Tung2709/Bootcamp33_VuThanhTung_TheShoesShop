@@ -47,11 +47,11 @@ export default productReducer.reducer
 /*----------async action-------------- */
 export const getProductApi = () =>{
 	return async dispatch =>{
-		// let result = await axios ({
-		// 	url:'https://shop.cyberlearn.vn/api/Product',
-		// 	method: 'GET',
-		// })
-		let result = await http.get('/api/Product')
+		let result = await axios ({
+			url:'https://shop.cyberlearn.vn/api/Product',
+			method: 'GET',
+		})
+		// let result = await http.get('/api/Product')
 
 		const action= getDataProductAction(result.data.content)
 		dispatch(action);

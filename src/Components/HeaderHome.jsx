@@ -1,12 +1,28 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from "react-redux";
+import { ACCESS_TOKEN, setting, USER_LOGIN } from '../util/config';
 export default function HomeHeader() {
-  const {userLogin}=useSelector(state=>state.userReducer)
-  const renderLogin = ()=>{
-    if(userLogin.email){
-      return <NavLink to='/profile' className="nav-link"> Hello! {userLogin.email}</NavLink>
-    }else{
+  const { userProfile } = useSelector(state => state.userReducer)
+  const renderLogin = () => {
+    if (userProfile.name) {
+      return <>
+        <div className="row">
+          <div className="col-7">
+            <NavLink to='/profile' className="nav-link"> Hello! {userProfile.name}</NavLink>
+          </div>
+          <div className="col-5">
+            <button className="nav-link btn" style={{ background: 'none', border: 'none' }} onClick={() => {
+              setting.eraseCookie(ACCESS_TOKEN, 0);
+              localStorage.removeItem(USER_LOGIN)
+              localStorage.removeItem(ACCESS_TOKEN)
+              // sau khi đăng xuất xong chuyển về trang login đồng thời reload lại page clear redux
+              window.location.href = '/login';
+            }}> Đăng xuất</button>
+          </div>
+        </div>
+      </>
+    } else {
       return <NavLink className="nav-link" to="/login">Login</NavLink>
     }
   }
@@ -20,6 +36,9 @@ export default function HomeHeader() {
           <ul className="navbar-nav me-auto mt-2 mt-lg-0">
             <li className="nav-item">
               <NavLink className="nav-link active" to='/home' aria-current="page">Home <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " to='/register' aria-current="page">Register<span className="visually-hidden">(current)</span></NavLink>
             </li>
             <li className="nav-item">
               {renderLogin()}

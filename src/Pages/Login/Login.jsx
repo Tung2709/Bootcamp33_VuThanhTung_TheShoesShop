@@ -3,6 +3,7 @@ import {useFormik} from 'formik'
 import * as yup from 'yup'
 import {useDispatch} from 'react-redux'
 import { loginApi } from '../../redux/productReducer/userReducer'
+import LoginFacebook from "../../Components/LoginFacebook/LoginFacebook";
 export default function Login() {
   const dispatch =useDispatch()
   const frm=useFormik({
@@ -34,6 +35,7 @@ export default function Login() {
     </div>
     <div className="form-group"></div>
     <button className="btn btn-success mt-2" type='submit'>Login</button>
+    <LoginFacebook/>
   </form>
   )
 }

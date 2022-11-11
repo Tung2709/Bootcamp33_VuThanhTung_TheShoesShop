@@ -17,7 +17,7 @@ export default function Home() {
       <div className="container">
         <div className="row">
           {arrProduct.map((prod, index) => {
-            return <div className="col-4" key={index}>
+            return <div className="col-4 mt-2" key={index}>
               <div className="card">
                 <img src={prod.image} alt="..." />
                 <div className="card-body">

@@ -50,8 +50,8 @@ export const setting = {
 		var ca = document.cookie.split(';');
 		for (var i = 0; i < ca.length; i++) {
 			var c = ca[i];
-			while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-			if (c.indexOf(nameEQ) == 0) return JSON.parse(c.substring(nameEQ.length, c.length));
+			while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) === 0) return JSON.parse(c.substring(nameEQ.length, c.length));
 		}
 		return null;
 	},
@@ -60,8 +60,8 @@ export const setting = {
 		var ca = document.cookie.split(';');
 		for (var i = 0; i < ca.length; i++) {
 			var c = ca[i];
-			while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+			while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
 		}
 		return null;
 	},
@@ -78,7 +78,7 @@ export const TOKEN_CYBERSOFT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3A
 
 export const http = axios.create({
 	baseURL: 'https://shop.cyberlearn.vn', //tất cả các hàm khi api đều dùng domain này
-	timeout: 30000 // sẽ request trong 3 phút nếu không nhận được kết quả sẽ hủy request này
+	timeout: 60000 // sẽ request trong 3 phút nếu không nhận được kết quả sẽ hủy request này
 })
 
 // cấu hình cho request : client gửi api đến server
