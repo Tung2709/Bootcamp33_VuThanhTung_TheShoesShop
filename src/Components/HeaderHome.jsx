@@ -28,34 +28,34 @@ export default function HomeHeader() {
   }
   return (
     <div>
-      <nav className=" navbar navbar-expand-sm navbar-dark bg-dark d-flex flex-row justify-content-around">
-        <NavLink className="navbar-brand btn" style={{border:'none'}} to='/'><img  src="./img/image 3.png" alt="..." /></NavLink>
+      <nav className=" navbar navbar-expand-sm navbar-dark bg-dark">
+        <NavLink className="navbar-brand btn" style={{ border: 'none' }} to='/'><img src="./img/image 3.png" alt="..." /></NavLink>
         <button className="navbar-toggler d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
-        <div className="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
-          <form className="d-flex my-2 text-white">
+        <div className="collapse navbar-collapse justify-content-end align-items-start " id="collapsibleNavId">
+          <form className=" my-2 text-white ">
             {/* <button className="btn my-2 text-white" type="submit"><i class="fas fa-search"></i>Search</button>
             <button className="btn my-2 text-white" type="submit" ><i class="fa-solid fa-cart-shopping"></i>(1)</button> */}
             <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link active" to='/search' aria-current="page"><i class="fas fa-search"></i>Search <span className="visually-hidden">(current)</span></NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link m-0 p-0 " to='/cart' aria-current="page"><button className="btn p-0 my-2 text-white" style={{border:'none'}} type="submit" ><i class="fa-solid fa-cart-shopping m-0 p-0"></i>(1)</button><span className="visually-hidden">(current)</span></NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link " to='/register' aria-current="page">Register<span className="visually-hidden">(current)</span></NavLink>
-            </li>
-            <li className="nav-item">
-              {renderLogin()}
-            </li>
-          </ul>
+              <li className="nav-item">
+                <NavLink className="nav-link active search" to='/search' aria-current="page"><i class="fas fa-search"></i>Search <span className="visually-hidden">(current)</span></NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link cart m-0 p-0 " to='/cart' aria-current="page"><i class="fa-solid fa-cart-shopping m-0 p-0"></i><span className="number-item">(1)</span><span className="visually-hidden">(current)</span></NavLink>
+              </li>
+              <li className="nav-item">
+                {renderLogin()}
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link " to='/register' aria-current="page">Register<span className="visually-hidden">(current)</span></NavLink>
+              </li>
+            </ul>
           </form>
         </div>
-        <br />   
+        <br />
       </nav>
       <nav className="navbar navbar-expand-sm navbar-dark bg-white">
-      <div className="collapse navbar-collapse" id="collapsibleNavId">
-      <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+        <div className="collapse  navbar-collapse" id="collapsibleNavId">
+          <ul className="navbar-nav type-product me-auto mt-2 mt-lg-0">
             <li className="nav-item text-dark">
               <NavLink className="nav-link active text-dark" to='/home' aria-current="page">Home <span className="visually-hidden">(current)</span></NavLink>
             </li>
@@ -71,10 +71,12 @@ export default function HomeHeader() {
             <li className="nav-item text-dark">
               <NavLink className="nav-link text-dark" to='' aria-current="page">Sport <span className="visually-hidden">(current)</span></NavLink>
             </li>
-          </ul> 
+          </ul>
         </div>
       </nav>
     </div>
 
   )
 }
+
+

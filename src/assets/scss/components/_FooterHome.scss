@@ -1,0 +1,56 @@
+.footer .footer-detail {
+  padding: 25px 105px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.footer .row .col-4 {
+  padding: 28px 56px;
+  border-right: 1px solid #dedddc;
+}
+
+.footer .row .col-4.register {
+  border-right: none;
+}
+
+.footer .row .col-4 h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.footer .row .col-4 ul {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .row .col-4 ul li {
+  padding-bottom: 10px;
+}
+
+.footer .row .col-4 ul li a {
+  color: black;
+}
+
+.footer .footer-author {
+  background: #d9d9d9;
+  height: 74px;
+  text-align: center;
+}
+
+.footer .footer-author p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 74px;
+  color: #000000;
+}

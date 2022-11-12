@@ -1,17 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+// @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap");
 
-.navbar{
-	padding:0 20px;
-	margin: 0
+.navbar {
+  padding: 0 20px;
+  margin: 0;
+  font-family: "Inter", sans-serif;
 }
-.navbar-brand.btn{
-	padding:10px 0px 8px 4px
+.navbar-brand.btn {
+  padding: 10px 0px 8px 4px;
 }
-.navbar-brand.btn img{
-	width:116px;
-	height: 32px;
+.navbar-brand.btn img {
+  width: 116px;
+  height: 32px;
 }
-.navbar-nav .nav-link i{
-	font-size:33px;
+.navbar-nav .nav-link .fas.fa-search {
+  font-size: 33px;
+}
+.navbar-nav .nav-link.search {
+  //   position: absolute;
+  //   left: 27.94%;
+  //   right: 0%;
+  //   top: 0%;
+  //   bottom: 1.01%;
 
+  //   font-family: "Inter";
+  //   font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.navbar-nav .nav-link .fa-solid.fa-cart-shopping {
+  font-size: 24px;
+  line-height: 49px;
+}
+
+.navbar-nav .nav-link.cart .number-item {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 49px;
+  color: #ffffff;
+}
+.navbar-nav .nav-link {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 49px;
+
+  color: #f7f7f7;
+}
+
+.navbar-nav.type-product .nav-link {
+  padding:16px 30px 10px 1px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
 }
