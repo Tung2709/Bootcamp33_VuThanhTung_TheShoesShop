@@ -28,14 +28,19 @@ export default function HomeHeader() {
   }
   return (
     <div>
-
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <NavLink className="navbar-brand" to='/'>Shoes Shop</NavLink>
-        <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
-        <div className="collapse navbar-collapse" id="collapsibleNavId">
-          <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+      <nav className=" navbar navbar-expand-sm navbar-dark bg-dark d-flex flex-row justify-content-around">
+        <NavLink className="navbar-brand btn" style={{border:'none'}} to='/'><img  src="./img/image 3.png" alt="..." /></NavLink>
+        <button className="navbar-toggler d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
+        <div className="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
+          <form className="d-flex my-2 text-white">
+            {/* <button className="btn my-2 text-white" type="submit"><i class="fas fa-search"></i>Search</button>
+            <button className="btn my-2 text-white" type="submit" ><i class="fa-solid fa-cart-shopping"></i>(1)</button> */}
+            <ul className="navbar-nav me-auto mt-2 mt-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link active" to='/home' aria-current="page">Home <span className="visually-hidden">(current)</span></NavLink>
+              <NavLink className="nav-link active" to='/search' aria-current="page"><i class="fas fa-search"></i>Search <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link m-0 p-0 " to='/cart' aria-current="page"><button className="btn p-0 my-2 text-white" style={{border:'none'}} type="submit" ><i class="fa-solid fa-cart-shopping m-0 p-0"></i>(1)</button><span className="visually-hidden">(current)</span></NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link " to='/register' aria-current="page">Register<span className="visually-hidden">(current)</span></NavLink>
@@ -44,10 +49,29 @@ export default function HomeHeader() {
               {renderLogin()}
             </li>
           </ul>
-          <form className="d-flex my-2 my-lg-0">
-            <input className="form-control me-sm-2" type="text" placeholder="Search" />
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+        </div>
+        <br />   
+      </nav>
+      <nav className="navbar navbar-expand-sm navbar-dark bg-white">
+      <div className="collapse navbar-collapse" id="collapsibleNavId">
+      <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+            <li className="nav-item text-dark">
+              <NavLink className="nav-link active text-dark" to='/home' aria-current="page">Home <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+            <li className="nav-item text-dark">
+              <NavLink className="nav-link text-dark" to='' aria-current="page">Men <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+            <li className="nav-item text-dark">
+              <NavLink className="nav-link text-dark" to='' aria-current="page">Woman <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+            <li className="nav-item text-dark">
+              <NavLink className="nav-link text-dark" to='' aria-current="page">Kid <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+            <li className="nav-item text-dark">
+              <NavLink className="nav-link text-dark" to='' aria-current="page">Sport <span className="visually-hidden">(current)</span></NavLink>
+            </li>
+          </ul> 
         </div>
       </nav>
     </div>
