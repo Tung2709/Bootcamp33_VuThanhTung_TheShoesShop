@@ -69,7 +69,7 @@
 }
 
 .product-feature .row {
-  padding: 35px 99px;
+  padding: 35px 0px 35px 99px;
 }
 
 .product-feature .row .col-4 {
@@ -85,9 +85,16 @@
   background: #f8f8f8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.product-feature .row .col-4 .card i {
+.product-feature .row .col-4 .card .fa-regular.fa-heart {
   position: relative;
-  font-weight: 400;
+  font-size: 40px;
+  top: 30px;
+  left: 267px;
+  color: #FB0B0B;
+  cursor: pointer;
+}
+.product-feature .row .col-4 .card .fa-solid.fa-heart {
+  position: relative;
   font-size: 40px;
   top: 30px;
   left: 267px;
