@@ -6,12 +6,13 @@ import { Carousel } from "antd";
 import 'antd/dist/antd.min.css'
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { getProductFavoriteApi } from '../../redux/productReducer/userReducer';
+import { setting, USER_PRODUCTS_FAVORITE } from '../../util/config';
 
 export default function Home() {
   const dispatch = useDispatch()
   const { arrProduct } = useSelector(state => state.productReducer)
   const {userProductsFavorite} = useSelector(state => state.userReducer)
-  console.log('cái kết',userProductsFavorite)
+  console.log('khởi tạo ban đầu',userProductsFavorite)
   useEffect(() => {
     const action = getProductApi();
     dispatch(action);
@@ -45,9 +46,10 @@ export default function Home() {
           {arrProduct.map((prod, index) => {
             return <div className="col-4" key={index}>
               <div className="card">
-                <i className="fa-regular fa-heart" style={{display:userProductsFavorite.filter(item=>item===prod.id).length===0?'':'none'}} onClick={()=>{addProductFavorite(prod)}}>      
+                <i className="fa-regular fa-heart" style={{display:userProductsFavorite.filter(item=>Number(item)===prod.id).length===0?'':'none'}} onClick={()=>{addProductFavorite(prod)}}>      
                  </i>
-                 <i className="fa-solid fa-heart" style={{display:userProductsFavorite.filter(item=>item===prod.id).length===0?'none':''}} onClick={()=>{addProductFavorite(prod)}}>      
+                 { console.log(setting.getStorage(USER_PRODUCTS_FAVORITE))}
+                 <i className="fa-solid fa-heart" style={{display:userProductsFavorite.filter(item=>Number(item)===prod.id).length===0?'none':''}} onClick={()=>{addProductFavorite(prod)}}>      
                  </i>
                 <img src={prod.image} alt="..." />
                 <div className="card-body">

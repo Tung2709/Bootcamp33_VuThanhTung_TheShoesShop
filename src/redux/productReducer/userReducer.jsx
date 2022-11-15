@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import 'axios'
-import { ACCESS_TOKEN, http, setting, USER_LOGIN } from '../../util/config';
+import { ACCESS_TOKEN, http, setting, USER_LOGIN, USER_PRODUCTS_FAVORITE } from '../../util/config';
 const initialState = {
 	//nếu localStorage có dữ liệu => load dữ liệu default cho state.userLogin của redux, nếu localStorage không có thì gán object {}
 	userLogin: setting.getStorageJSON(USER_LOGIN) ? setting.getStorageJSON(USER_LOGIN) : {},
 	userProfile: {},
-	userProductsFavorite: [],
+	userProductsFavorite: setting.getStorage(USER_PRODUCTS_FAVORITE)?setting.getStorage(USER_PRODUCTS_FAVORITE).split(","):[],
 }
 
 const userReducer = createSlice({
@@ -20,18 +20,21 @@ const userReducer = createSlice({
 			state.userProfile = action.payload;
 		}
 		,
-		getProductFavoriteAction:  (state, action) => {
+		getProductFavoriteAction: (state, action) => {
 			const addProductFavorite = action.payload
-			if(state.userProductsFavorite.filter(user=> user===addProductFavorite.productsFavorite).length===0){
-				console.log('add')
+			if (state.userProductsFavorite.filter(user => Number(user) ===addProductFavorite.productsFavorite).length === 0) {
+				console.log('Add products favorite')
 				state.userProductsFavorite.push(addProductFavorite.productsFavorite)
-				console.log('đây nè',state.userProductsFavorite)
-			}else{
-				console.log('remove')
-				state.userProductsFavorite=state.userProductsFavorite.filter(user => user!==addProductFavorite.productsFavorite)
-				console.log('đây nè',state.userProductsFavorite)
+				setting.setStorage(USER_PRODUCTS_FAVORITE, state.userProductsFavorite)
+				setting.setCookie(USER_PRODUCTS_FAVORITE, state.userProductsFavorite, 30)
+			} else {
+				console.log('remove products favorite')
+				state.userProductsFavorite = state.userProductsFavorite.filter(user => Number(user) !== addProductFavorite.productsFavorite)
+
+				setting.setStorage(USER_PRODUCTS_FAVORITE, state.userProductsFavorite)
+				setting.setCookie(USER_PRODUCTS_FAVORITE, state.userProductsFavorite, 30)
 			}
-			
+
 		}
 		,
 	}
@@ -96,7 +99,7 @@ export const getProductFavoriteApi = (prod) => {
 		const result = await http.get('/api/Users/getproductfavorite');
 		const productFavorite = result.data.content.productsFavorite
 		if (productFavorite.filter(item => item === prod.id).length === 0) {
-			result.data.content.productsFavorite=prod.id
+			result.data.content.productsFavorite = prod.id
 		}
 		const action = getProductFavoriteAction(result.data.content)
 		dispatch(action)
