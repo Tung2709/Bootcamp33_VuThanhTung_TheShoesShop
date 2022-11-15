@@ -1,0 +1,101 @@
+.detail {
+  font-family: "Inter";
+  font-style: normal;
+  background-color: #ffffff;
+  margin: 58px 40px 100px 65px;
+}
+.detail .row.item-current .col-4 {
+  width: 334px;
+  margin-right: 128px;
+}
+.detail .row.item-current .col-4 img {
+  width: 334px;
+  height: 355px;
+  object-fit: "cover";
+}
+
+.detail .row.item-current .col-8 {
+  width: 600px;
+}
+
+.detail .row.item-current .col-8 h3 {
+  font-weight: 300;
+  font-size: 30px;
+  color: #000000;
+  margin-bottom: 9px;
+}
+
+.detail .row.item-current .col-8 p {
+  font-weight: 400;
+  font-size: 16px;
+  color: #140101;
+}
+
+.detail .row.item-current .col-8 h4 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #1ed90e;
+  margin-bottom: 48px;
+}
+
+.detail .row.item-current .col-8 .btn.size {
+  font-weight: 600;
+  font-size: 24px;
+  color: #1e1d1d;
+  background: #cccccc;
+  padding: 11px 10px;
+  margin-right: 21px;
+  margin-bottom: 17px;
+  border-radius: 0;
+}
+
+.detail .row.item-current .col-8 h2 {
+  font-weight: 600;
+  font-size: 30px;
+  color: #fc0303;
+}
+
+.detail .row.item-current .col-8 .btn.inc,
+.detail .row.item-current .col-8 .btn.dec {
+  font-weight: 400;
+  font-size: 30px;
+  color: #fffcfc;
+  background: linear-gradient(180deg, #6181f3 0%, #7c97f5 99.48%);
+  padding: 6px 15px;
+  border-radius: 0;
+  margin-right: 20px;
+  margin-bottom: 7px;
+}
+
+.detail .row.item-current .col-8 span {
+  font-weight: 400;
+  font-size: 30px;
+  // điểu chỉnh cho số 1 ở giữa ???
+  margin-right: 20px;
+  color: #000000;
+}
+
+.detail .row.item-current .col-8 .btn.add {
+  font-weight: 500;
+  font-size: 24px;
+  color: #fff8f8;
+  background: linear-gradient(
+    270deg,
+    rgba(62, 32, 248, 0.9) 5.14%,
+    #d017ee 89.71%
+  );
+  border-radius: 0;
+  padding: 18px 24px;
+}
+
+.detail .item-related {
+  margin: 16px 0 106px 84px;
+}
+
+.detail .item-related h3 {
+  font-weight: 400;
+  font-size: 40px;
+  text-align: center;
+  color: #000000;
+  padding-bottom: 107px;
+}

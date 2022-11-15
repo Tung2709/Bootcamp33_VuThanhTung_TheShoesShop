@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom';
@@ -14,18 +15,32 @@ export default function Detail() {
   }, [id])
 
   return (
-    <div className='container'>
-      <div className="row">
-        <div className="col-4 mt-2">
-          <img src={productDetail.image} width='100%' alt="" />
+    <div className='detail'>
+      <div className="row item-current">
+        <div className="col-4 p-0">
+          <img src={productDetail.image} alt="" />
         </div>
-        <div className="col-8 mt-2">
+        <div className="col-8 ">
           <h3>{productDetail.name}</h3>
           <p>{productDetail.description}</p>
+          <h4>Available size</h4>
+          {productDetail.size?.map((size,index)=>{
+            return <div className="btn size" key={index} >
+                {size}
+            </div>
+          })}
+          <h2>{productDetail.price}$</h2>
+          <div className="btn inc">+</div>
+          <span>1</span>
+          <div className="btn dec">-</div>
+          <br />
+          <div className="btn add">Add to cart</div>
         </div>
+        
       </div>
-      <h3 className='mt-2'>Related Products</h3>
-      <div className="row mt-2">
+      <div className="item-related">
+      <h3 >Related Products</h3>
+      <div className="row">
         {productDetail.relatedProducts?.map((prod, index) => {
           return <div className="col-4" key={index}>
             <div className="card">
@@ -38,6 +53,7 @@ export default function Detail() {
             </div>
           </div>
         })}
+      </div>
       </div>
     </div>
   )

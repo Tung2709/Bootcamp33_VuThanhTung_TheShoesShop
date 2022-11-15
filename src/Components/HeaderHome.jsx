@@ -30,7 +30,7 @@ export default function HomeHeader() {
     <div>
       <nav className=" navbar navbar-expand-sm navbar-dark bg-dark">
         <NavLink className="navbar-brand btn" style={{ border: 'none' }} to='/'><img src="./img/image 3.png" alt="..." /></NavLink>
-        <button className="navbar-toggler d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
+        {/* <button className="navbar-toggler d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" /> */}
         <div className="collapse navbar-collapse justify-content-end align-items-start " id="collapsibleNavId">
           <form className=" my-2 text-white ">
             {/* <button className="btn my-2 text-white" type="submit"><i class="fas fa-search"></i>Search</button>
