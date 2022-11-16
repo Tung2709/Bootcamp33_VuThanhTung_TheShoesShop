@@ -1,12 +1,14 @@
 .detail {
   font-family: "Inter";
   font-style: normal;
-  background-color: #ffffff;
+  background: #ffffff;
   margin: 58px 40px 100px 65px;
 }
 .detail .row.item-current .col-4 {
   width: 334px;
+  height: 355px;
   margin-right: 128px;
+  background: #f8f8f8;
 }
 .detail .row.item-current .col-4 img {
   width: 334px;
@@ -86,6 +88,7 @@
   );
   border-radius: 0;
   padding: 18px 24px;
+  margin-bottom: 39px;
 }
 
 .detail .item-related {
@@ -98,4 +101,91 @@
   text-align: center;
   color: #000000;
   padding-bottom: 107px;
+}
+
+.detail .item-related .row .col-4 {
+  padding: 0;
+}
+.detail .item-related .row .col-4 .card{
+  background: #f8f8f8;
+  width: 334px;
+  margin-right: 97px;
+  padding: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-style: none;
+}
+.detail .item-related .row .col-4 .card .card-img-top {
+  width: 210px;
+  height: 200px;
+  object-fit: "cover";
+  margin: 45px 67px 18px 57px;
+}
+
+.detail .item-related .row .col-4 .card .card-body {
+  padding: 0 23px;
+}
+
+.detail .item-related .row .col-4 .card .card-body h3 {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 8px;
+  padding: 0;
+  color: #000000;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.detail .item-related .row .col-4 .card .card-body h3:hover {
+  overflow: visible;
+}
+
+.detail .item-related .row .col-4 .card .card-body p {
+  font-weight: 300;
+  font-size: 20px;
+  color: #cbc9c9;
+}
+
+.detail .item-related .row .col-4 .card .card-footer {
+  background: #dedddc;
+  padding: 0;
+  margin: 0;
+}
+
+.detail .item-related .row .col-4 .card .card-footer .btn {
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+  background: #9de167;
+  padding: 0;
+  padding: 17px 27px 18px 39px;
+  border-style: none;
+}
+
+.detail .item-related .row .col-4 .card .card-footer p {
+  font-weight: 600;
+  font-size: 24px;
+  color: #000000;
+  margin: 0;
+  padding: 17px 0 18px 66px;
+}
+
+
+.detail .item-related .row .col-4 .card .fa-regular.fa-heart {
+  position: relative;
+  font-size: 40px;
+  top: 30px;
+  left: 267px;
+  color: #FB0B0B;
+  cursor: pointer;
+}
+.detail .item-related .row .col-4 .card .fa-solid.fa-heart {
+  position: relative;
+  font-size: 40px;
+  top: 30px;
+  left: 267px;
+  color: #FB0B0B;
+  cursor: pointer;
 }

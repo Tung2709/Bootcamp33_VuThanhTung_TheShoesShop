@@ -9,7 +9,7 @@
 .navbar-brand.btn img {
   width: 116px;
   height: 32px;
-  object-fit: 'cover';
+  object-fit: 'contain';
 }
 .navbar-nav .nav-link .fas.fa-search {
   font-size: 33px;
@@ -54,4 +54,14 @@
   line-height: 24px;
 
   color: #000000;
+}
+
+.nav-item .row .col-7 .nav-link{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.nav-item .row .col-7 .nav-link:hover{
+  overflow: visible;
 }
