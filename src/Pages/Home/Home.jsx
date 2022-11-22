@@ -48,7 +48,6 @@ export default function Home() {
               <div className="card">
                 <i className="fa-regular fa-heart" style={{display:userProductsFavorite.filter(item=>Number(item)===prod.id).length===0?'':'none'}} onClick={()=>{addProductFavorite(prod)}}>      
                  </i>
-                 { console.log(setting.getStorage(USER_PRODUCTS_FAVORITE))}
                  <i className="fa-solid fa-heart" style={{display:userProductsFavorite.filter(item=>Number(item)===prod.id).length===0?'none':''}} onClick={()=>{addProductFavorite(prod)}}>      
                  </i>
                 <img src={prod.image} alt="..." />

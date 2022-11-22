@@ -4,6 +4,10 @@ import { useSelector } from "react-redux";
 import { ACCESS_TOKEN, setting, USER_LOGIN } from '../util/config';
 export default function HomeHeader() {
   const { userProfile } = useSelector(state => state.userReducer)
+  const {userProductsSelected} = useSelector(state=>state.userReducer)
+  const totalItem = userProfile.name?userProductsSelected.reduce(function (acc, obj) { return acc + obj.quantity; }, 0):0;
+  console.log(userProfile)
+
   const renderLogin = () => {
     if (userProfile.name) {
       return <>
@@ -40,7 +44,7 @@ export default function HomeHeader() {
                 <NavLink className="nav-link active search" to='/search' aria-current="page"><i className="fas fa-search"></i>Search <span className="visually-hidden">(current)</span></NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link cart m-0 p-0 " to='/cart' aria-current="page"><i className="fa-solid fa-cart-shopping m-0 p-0"></i><span className="number-item">(1)</span><span className="visually-hidden">(current)</span></NavLink>
+                <NavLink className="nav-link cart m-0 p-0 " to='/cart' aria-current="page"><i className="fa-solid fa-cart-shopping m-0 p-0"></i><span className="number-item">({totalItem?totalItem:0})</span><span className="visually-hidden">(current)</span></NavLink>
               </li>
               <li className="nav-item">
                 {renderLogin()}

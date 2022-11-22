@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom';
 import { getProductDetailApi } from '../../redux/productReducer/productReducer';
-import { getProductFavoriteApi } from '../../redux/productReducer/userReducer';
+import { getProductFavoriteApi, getProductsSelectedAction } from '../../redux/productReducer/userReducer';
 import { setting, USER_PRODUCTS_FAVORITE } from '../../util/config';
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams()
   const { productDetail } = useSelector(state => state.productReducer)
+  const [quantity, setQuantity] = useState(1);
   const {userProductsFavorite} = useSelector(state => state.userReducer)
   useEffect(() => {
     const action = getProductDetailApi(id)
@@ -20,6 +21,14 @@ export default function Detail() {
     dispatch(action)
   }
 
+  const quantityItem = (x) => {
+    setQuantity(quantity+x)
+  }
+
+  const addItemtoCart=(item)=>{
+    const action = getProductsSelectedAction(item);
+    dispatch(action)
+  }
   return (
     <div className='detail'>
       <div className="row item-current">
@@ -36,11 +45,11 @@ export default function Detail() {
             </div>
           })}
           <h2>{productDetail.price}$</h2>
-          <div className="btn inc">+</div>
-          <span>1</span>
-          <div className="btn dec">-</div>
+          <div className="btn inc" onClick={()=>{quantityItem(1)}}>+</div>
+          <span>{quantity}</span>
+          <div className="btn dec"onClick={quantity>1?()=>{quantityItem(-1)}:null}>-</div>
           <br />
-          <div className="btn add">Add to cart</div>
+          <div className="btn add" onClick={()=>addItemtoCart({...productDetail,quantity,checked:false})}>Add to cart</div>
         </div>
 
       </div>
@@ -61,7 +70,7 @@ export default function Detail() {
                   <p>{prod.shortDescription}</p>
                 </div>
                 <div className="card-footer d-flex">
-                  <NavLink to={`/detail/${prod.id}`} className='btn'>Buy now</NavLink>
+                  <NavLink to={`/detail/${prod.id}`} onClick={()=>{setQuantity(1)}} className='btn'>Buy now</NavLink>
                   <p>{prod.price}$</p>
                 </div>
               </div>

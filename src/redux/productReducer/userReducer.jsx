@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import 'axios'
-import { ACCESS_TOKEN, http, setting, USER_LOGIN, USER_PRODUCTS_FAVORITE } from '../../util/config';
+import { ACCESS_TOKEN, http, setting, USER_LOGIN, USER_PRODUCTS_FAVORITE, USER_PRODUCTS_ORDER, USER_PRODUCTS_SELECTED } from '../../util/config';
 const initialState = {
 	//nếu localStorage có dữ liệu => load dữ liệu default cho state.userLogin của redux, nếu localStorage không có thì gán object {}
 	userLogin: setting.getStorageJSON(USER_LOGIN) ? setting.getStorageJSON(USER_LOGIN) : {},
 	userProfile: {},
-	userProductsFavorite: setting.getStorage(USER_PRODUCTS_FAVORITE)?setting.getStorage(USER_PRODUCTS_FAVORITE).split(","):[],
+	userProductsFavorite: setting.getStorage(USER_PRODUCTS_FAVORITE) ? setting.getStorage(USER_PRODUCTS_FAVORITE).split(",") : [],
+	userProductsSelected: setting.getStorageJSON(USER_PRODUCTS_SELECTED) ? setting.getStorageJSON(USER_PRODUCTS_SELECTED) : [],
+	// userProductsOrder: setting.getStorageJSON(USER_PRODUCTS_ORDER) ? setting.getStorageJSON(USER_PRODUCTS_ORDER) : [],
+	userProductsOrder:{},
 }
 
 const userReducer = createSlice({
@@ -22,13 +25,11 @@ const userReducer = createSlice({
 		,
 		getProductFavoriteAction: (state, action) => {
 			const addProductFavorite = action.payload
-			if (state.userProductsFavorite.filter(user => Number(user) ===addProductFavorite.productsFavorite).length === 0) {
-				console.log('Add products favorite')
+			if (state.userProductsFavorite.filter(user => Number(user) === addProductFavorite.productsFavorite).length === 0) {
 				state.userProductsFavorite.push(addProductFavorite.productsFavorite)
 				setting.setStorage(USER_PRODUCTS_FAVORITE, state.userProductsFavorite)
 				setting.setCookie(USER_PRODUCTS_FAVORITE, state.userProductsFavorite, 30)
 			} else {
-				console.log('remove products favorite')
 				state.userProductsFavorite = state.userProductsFavorite.filter(user => Number(user) !== addProductFavorite.productsFavorite)
 
 				setting.setStorage(USER_PRODUCTS_FAVORITE, state.userProductsFavorite)
@@ -37,10 +38,48 @@ const userReducer = createSlice({
 
 		}
 		,
+		getProductsSelectedAction: (state, action) => {
+			let itemSelected = action.payload
+			if (state.userProductsSelected?.filter(item => item.id === itemSelected.id).length !== 0) {
+				state.userProductsSelected?.filter(item => item.id === itemSelected.id).forEach((item) => {
+					item.quantity = item.quantity + itemSelected.quantity;
+					item.checked = itemSelected.checked
+				})
+			} else {
+				state.userProductsSelected.push(itemSelected)
+			}
+			setting.setStorageJSON(USER_PRODUCTS_SELECTED, state.userProductsSelected)
+		}
+		,
+		deleteProductAction: (state, action) => {
+			const idItem = action.payload;
+			const product = setting.getStorageJSON(USER_PRODUCTS_SELECTED);
+			state.userProductsSelected = product.filter(item => item.id !== idItem)
+			setting.setStorageJSON(USER_PRODUCTS_SELECTED, state.userProductsSelected)
+		}
+		,
+		getProductsOrderAction: (state, action) => {
+			let product = action.payload
+			state.userProductsOrder = product
+			console.log('order '+product)
+			// let orderItem = product.filter(item=>item.checked===true).map(({id,quantity})=>({productId:id,quantity:quantity}))
+			// const email=setting.getStorageJSON(USER_LOGIN).email
+			// const userOrderItem= {
+			// 	"orderDetail": [
+			// 	  orderItem
+			// 	],
+			// 	"email": {email}
+			//   }
+			// console.log(orderItem)
+			// state.userProductsOrder=(userOrderItem)
+			// setting.setStorageJSON(USER_PRODUCTS_ORDER,state.userProductsOrder)
+			// const result = http.post('/api/Users/order',userOrderItem)
+			// console.log(result.data.content)
+		}
 	}
 });
 
-export const { loginAction, getProfileAction, getProductFavoriteAction } = userReducer.actions
+export const { loginAction, getProfileAction, getProductFavoriteAction, getProductsSelectedAction, getProductsOrderAction, deleteProductAction } = userReducer.actions
 
 export default userReducer.reducer
 
@@ -103,5 +142,24 @@ export const getProductFavoriteApi = (prod) => {
 		}
 		const action = getProductFavoriteAction(result.data.content)
 		dispatch(action)
+	}
+}
+
+export const getOrderProductApi = (product) => {
+	return async dispatch => {
+		const orderItem = product.filter(item => item.checked === true).map(({ id, quantity }) => ({productId: id.toString(), quantity: quantity }))
+		const email = setting.getStorageJSON(USER_LOGIN).email
+		const userOrderItem = {
+			"orderDetail": [
+				orderItem
+			],
+			"email": { email }
+		}
+		console.log('trước order',userOrderItem)
+		const result = await http.post('/api/Users/order', userOrderItem)
+		const action = getProductsOrderAction(result.data.content)
+		dispatch(action)
+		console.log(result)
+		setting.setStorageJSON(USER_PRODUCTS_ORDER, userOrderItem)
 	}
 }

@@ -3,7 +3,9 @@ import { history } from "../index";
 
 export const USER_LOGIN = 'userLogin'
 export const ACCESS_TOKEN = 'accessToken'
-export const USER_PRODUCTS_FAVORITE='userProductFavorite'
+export const USER_PRODUCTS_FAVORITE='userProductsFavorite'
+export const USER_PRODUCTS_SELECTED='userProductsSelected'
+export const USER_PRODUCTS_ORDER='userProductsOrder'
 
 export const setting = {
 	setStorageJSON: (name, data) => {
