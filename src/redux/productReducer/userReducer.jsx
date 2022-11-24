@@ -8,7 +8,7 @@ const initialState = {
 	userProductsFavorite: setting.getStorage(USER_PRODUCTS_FAVORITE) ? setting.getStorage(USER_PRODUCTS_FAVORITE).split(",") : [],
 	userProductsSelected: setting.getStorageJSON(USER_PRODUCTS_SELECTED) ? setting.getStorageJSON(USER_PRODUCTS_SELECTED) : [],
 	// userProductsOrder: setting.getStorageJSON(USER_PRODUCTS_ORDER) ? setting.getStorageJSON(USER_PRODUCTS_ORDER) : [],
-	userProductsOrder:{},
+	userProductsOrder: {},
 }
 
 const userReducer = createSlice({
@@ -61,20 +61,10 @@ const userReducer = createSlice({
 		getProductsOrderAction: (state, action) => {
 			let product = action.payload
 			state.userProductsOrder = product
-			console.log('order '+product)
-			// let orderItem = product.filter(item=>item.checked===true).map(({id,quantity})=>({productId:id,quantity:quantity}))
-			// const email=setting.getStorageJSON(USER_LOGIN).email
-			// const userOrderItem= {
-			// 	"orderDetail": [
-			// 	  orderItem
-			// 	],
-			// 	"email": {email}
-			//   }
-			// console.log(orderItem)
-			// state.userProductsOrder=(userOrderItem)
-			// setting.setStorageJSON(USER_PRODUCTS_ORDER,state.userProductsOrder)
-			// const result = http.post('/api/Users/order',userOrderItem)
-			// console.log(result.data.content)
+			//Xóa các sản phẩm đã order trong list cart
+			const productOrder = setting.getStorageJSON(USER_PRODUCTS_SELECTED);
+			state.userProductsSelected = productOrder.filter(item => item.checked !== true)
+			setting.setStorageJSON(USER_PRODUCTS_SELECTED, state.userProductsSelected)
 		}
 	}
 });
@@ -147,19 +137,22 @@ export const getProductFavoriteApi = (prod) => {
 
 export const getOrderProductApi = (product) => {
 	return async dispatch => {
-		const orderItem = product.filter(item => item.checked === true).map(({ id, quantity }) => ({productId: id.toString(), quantity: quantity }))
+		const orderItem = product.filter(item => item.checked === true).map(({ id, quantity }) => ({ productId: id.toString(), quantity: quantity }))
 		const email = setting.getStorageJSON(USER_LOGIN).email
 		const userOrderItem = {
-			"orderDetail": [
-				orderItem
-			],
-			"email": { email }
+			"orderDetail": orderItem
+			,
+			email
 		}
-		console.log('trước order',userOrderItem)
 		const result = await http.post('/api/Users/order', userOrderItem)
+		console.log('ket qua', result.data)
 		const action = getProductsOrderAction(result.data.content)
 		dispatch(action)
-		console.log(result)
-		setting.setStorageJSON(USER_PRODUCTS_ORDER, userOrderItem)
+		const orderItemComplete = { ...userOrderItem, dateTime: result.data.dateTime }
+		// const userOrderItemPrev = setting.getStorageJSON(USER_PRODUCTS_ORDER) ? setting.getStorageJSON(USER_PRODUCTS_ORDER) : void(0)
+		if (result.data.statusCode === 200) {
+			const userOrderItemComplete = setting.getStorageJSON(USER_PRODUCTS_ORDER) ? [setting.getStorageJSON(USER_PRODUCTS_ORDER), orderItemComplete]:[orderItemComplete]
+			setting.setStorageJSON(USER_PRODUCTS_ORDER, userOrderItemComplete)
+		}
 	}
 }

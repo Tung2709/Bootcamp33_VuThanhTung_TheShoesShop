@@ -1,7 +1,7 @@
 .cart-item {
   font-family: "Inter";
   font-style: normal;
-  padding: 49px 0 160px 24px;
+  margin: 49px 0 160px 24px;
   background-color: #ffffff;
 }
 
@@ -11,9 +11,120 @@
   color: #000000;
   padding-left: 45px;
 }
+
 .cart-item hr {
   margin-left: 44px;
   margin-right: 40px;
   border: 1px solid #dedddc;
   transform: rotate(0.37deg);
+  margin-bottom: 71px;
+}
+
+.cart-item .table {
+  width: 95%;
+  margin-left: 50px;
+}
+
+.cart-item .table thead th {
+  background: #d9d9d9;
+  padding: 19px 16px;
+  border: none;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+  // vertical-align: super;
+  // width: calc(100%/8);
+}
+
+.cart-item .table thead th input {
+  background: #6200ee;
+  width: 24px;
+  height: 20px;
+}
+
+.cart-item .table tbody td {
+  border: none;
+  padding: 10px 16px;
+  background: #ffffff;
+  vertical-align: middle;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+}
+
+.cart-item .table tbody td input {
+  background: #6200ee;
+  width: 24px;
+  height: 20px;
+}
+
+.cart-item .table tbody td img {
+  width: 100px;
+  height: 80px;
+}
+.cart-item .table tbody td .btn.quantity {
+  align-items: flex-start;
+  padding: 6px 10px 6px 10px;
+  background: #6200ee;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12),
+    0px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.cart-item .table tbody td span {
+  padding: 1px 34px;
+  margin: 0 15px;
+  background: #d9d9d9;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+}
+
+.cart-item .table tbody td .btn.edit, .cart-item .table tbody td .btn.del {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 6px 20px 6px 20px;
+}
+
+.cart-item .table tbody td .btn.edit {
+  background: #6200ee;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12),
+    0px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-right: 26px;
+}
+
+.cart-item .table tbody td .btn.del {
+  background: #eb5757;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12),
+    0px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.cart-item .table tfoot td {
+  border: none;
+  text-align: right;
+
+}
+
+.cart-item .table tfoot td .btn {
+  text-align: right;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 14px;
+  margin-right: 50px;
+  background: #F2994A;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color: #FFFFFF;
 }

@@ -12,7 +12,6 @@ export default function Home() {
   const dispatch = useDispatch()
   const { arrProduct } = useSelector(state => state.productReducer)
   const {userProductsFavorite} = useSelector(state => state.userReducer)
-  console.log('khởi tạo ban đầu',userProductsFavorite)
   useEffect(() => {
     const action = getProductApi();
     dispatch(action);
