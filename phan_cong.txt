@@ -1,0 +1,2 @@
+Vũ Thanh Tùng làm trang: Home, Detail, Cart, Search
+Nguyễn Thị Khánh Huyền làm trang: Login, Profile, Register
