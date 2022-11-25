@@ -13,7 +13,7 @@ export default function Search() {
   useEffect(() => {
     const action = getProductApi();
     dispatch(action);
-  }, [])
+  }, [dispatch])
   const addProductFavorite = (prod) => {
     const action = getProductFavoriteApi(prod);
     dispatch(action)
