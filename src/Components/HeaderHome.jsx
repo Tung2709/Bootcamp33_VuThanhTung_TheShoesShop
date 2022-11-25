@@ -41,7 +41,7 @@ export default function HomeHeader() {
             <button className="btn my-2 text-white" type="submit" ><i class="fa-solid fa-cart-shopping"></i>(1)</button> */}
             <ul className="navbar-nav me-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link active search" to='/search' aria-current="page"><i className="fas fa-search"></i>Search <span className="visually-hidden">(current)</span></NavLink>
+                <NavLink className="nav-link active search-item" to='/search' aria-current="page"><i className="fas fa-search"></i>Search <span className="visually-hidden">(current)</span></NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link cart m-0 p-0 " to='/cart' aria-current="page"><i className="fa-solid fa-cart-shopping m-0 p-0"></i><span className="number-item">({totalItem?totalItem:0})</span><span className="visually-hidden">(current)</span></NavLink>

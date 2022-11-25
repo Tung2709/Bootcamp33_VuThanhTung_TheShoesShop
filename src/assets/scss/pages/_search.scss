@@ -1,0 +1,195 @@
+.search {
+  background: #ffffff;
+  font-family: "Roboto";
+  font-style: normal;
+}
+
+.search h3 {
+  padding-top: 68px;
+  padding-left: 51px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.135px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.search form {
+  margin-top: 5px;
+  margin-left: 44px;
+}
+
+.search form .product {
+  padding: 16px 12px 14px 14px;
+  margin-right: 37px;
+  margin-bottom: 44px;
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.search form .search-button {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 14px;
+  padding: 16px 34px 16px 27px;
+  /* identical to box height, or 114% */
+  align-items: center;
+  letter-spacing: 1.25px;
+  color: #ffffff;
+  background: #6200ee;
+  /* 04 dp */
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+
+.search .search-result h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  padding: 12px 0 14px 29px;
+  margin-bottom: 27px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #f21299 0%, #1b02b5 100%);
+}
+
+.search .search-result p {
+  margin-left: 104px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.135px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.search .search-result .btn {
+  display: flex;
+  flex-grow: 1;
+  flex: none;
+}
+
+.search .search-result .btn p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: left;
+  padding: 16px 12px 14px 14px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+  order: 0;
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+  margin-left: 98px;
+  margin-bottom: 4px;
+}
+
+.search .search-result .btn i {
+  font-size: 45px;
+  line-height: 53px;
+  position: absolute;
+  left: 500px;
+  color: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.search .search-result .row {
+	margin: 40px 0px 35px 104px;
+  }
+  
+  .search .search-result .row .col-4 {
+	padding: 0;
+	margin-right: 87px;
+	margin-bottom: 49px;
+	width: 334px;
+	border: none;
+	background: #f8f8f8;
+  }
+  
+  .search .search-result .row .col-4 .card {
+	background: #f8f8f8;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .search .search-result .row .col-4 .card .fa-regular.fa-heart {
+	position: relative;
+	font-size: 40px;
+	top: 30px;
+	left: 267px;
+	color: #FB0B0B;
+	cursor: pointer;
+  }
+  .search .search-result .row .col-4 .card .fa-solid.fa-heart {
+	position: relative;
+	font-size: 40px;
+	top: 30px;
+	left: 267px;
+	color: #FB0B0B;
+	cursor: pointer;
+  }
+  .search .search-result .row .col-4 .card img {
+	width: 210px;
+	height: 168px;
+	object-fit: cover;
+	margin: 45px 0 0 57px;
+  }
+  .search .search-result .row .col-4 .card .card-body {
+	padding: 0;
+	padding-top: 18px;
+  }
+  .search .search-result .row .col-4 .card .card-body h3 {
+	font-weight: 300;
+	font-size: 24px;
+	color: #000000;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding: 0;
+	margin-bottom: 8px;
+	padding-left: 23px;
+  }
+  
+  .search .search-result .row .col-4 .card .card-body p {
+	margin-bottom: 13px;
+	margin-left: 0;
+	padding-left: 23px;
+	font-weight: 300;
+	font-size: 20px;
+	color: #cbc9c9;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+  }
+  
+  .search .search-result .row .col-4 .card .card-footer {
+	padding: 0;
+	background: #dedddc;
+  }
+  
+  .search .search-result .row .col-4 .card .card-footer .btn {
+	padding: 19px 0 18px 20px;
+	width: 175px;
+	font-weight: 300;
+	font-size: 24px;
+	background: #9de167;
+	border-radius: 0;
+  }
+  
+  .search .search-result .row .col-4 .card .card-footer p {
+	width: 160px;
+	font-weight: 600;
+	font-size: 24px;
+	margin-left: 0;
+	padding-left: 66px;
+	padding-top: 17px;
+	background: #dedddc;
+  }
+  
+

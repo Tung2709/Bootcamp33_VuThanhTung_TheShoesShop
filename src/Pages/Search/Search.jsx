@@ -47,14 +47,14 @@ export default function Search() {
     <div className='search'>
       <h3>Search</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" name='product' onChange={handleChange} />
-        <input type="submit" style={{ color: 'red' }} value='Search' />
+        <input className='product' type="text" placeholder='product name...'  onChange={handleChange} />
+        <input className='search-button' type="submit" value='Search' />
       </form>
       <div className="search-result">
         <h2>Search result</h2>
         <p>Price</p>
-        <div className="btn" onClick={decreaseItem}>Decrease</div>
-        <div className="btn" onClick={ascreaseItem}>Ascending</div>
+        <div className="btn" onClick={decreaseItem}><p>Decrease</p> <i className="fas fa-caret-down"></i></div>
+        <div className="btn" onClick={ascreaseItem}><p>Ascending</p> <i className="fas fa-caret-up"></i></div>
         <div className="row">
           {item?.map((prod, index) => {
             return <div className="col-4" key={index}>
