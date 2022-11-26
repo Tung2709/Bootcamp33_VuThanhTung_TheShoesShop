@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import 'antd/dist/antd.min.css'
+import 'antd/dist/antd.min.css'
 import {
   unstable_HistoryRouter as HistoryRouter,
   Routes,

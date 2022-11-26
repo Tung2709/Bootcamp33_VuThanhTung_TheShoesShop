@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { getProductApi } from '../../redux/productReducer/productReducer'
 import { Carousel } from "antd";
-// import 'antd/dist/antd.min.css'
+import 'antd/dist/antd.min.css'
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { getProductFavoriteApi } from '../../redux/productReducer/userReducer';
 import { setting, USER_PRODUCTS_FAVORITE } from '../../util/config';
