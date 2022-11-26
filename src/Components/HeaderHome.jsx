@@ -5,7 +5,7 @@ import { ACCESS_TOKEN, setting, USER_LOGIN } from '../util/config';
 export default function HomeHeader() {
   const { userProfile } = useSelector(state => state.userReducer)
   const {userProductsSelected} = useSelector(state=>state.userReducer)
-  const totalItem = userProfile.name?userProductsSelected.reduce(function (acc, obj) { return acc + obj.quantity; }, 0):0;
+  const totalItem = userProductsSelected.reduce(function (acc, obj) { return acc + obj.quantity; }, 0);
   console.log(userProfile)
 
   const renderLogin = () => {
