@@ -74,8 +74,8 @@ export default function Cart() {
           <tr>
             <th style={{width:'5%'}}><input className="form-check-input" type="checkbox" value="" checked={checkedAll} onChange={handleSelectAll} /></th>
             <th style={{width:'5%'}}>id</th>
-            <th style={{width:'15%', textAlign:'center'}}>img</th>
-            <th style={{width:'20%'}}>name</th>
+            <th style={{width:'10%', textAlign:'center'}}>img</th>
+            <th style={{width:'25%'}}>name</th>
             <th style={{width:'5%'}}>price</th>
             <th style={{width:'20%', textAlign:'center'}}>quantity</th>
             <th style={{width:'10%'}}>total</th>
