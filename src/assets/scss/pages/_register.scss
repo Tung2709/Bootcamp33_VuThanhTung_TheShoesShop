@@ -1,0 +1,92 @@
+.register {
+  background-color: #ffffff;
+  margin-left: 112px;
+  margin-right: 79px;
+}
+
+.register h3 {
+  margin: 48px 0px 52px 0px;
+  padding-bottom: 42px;
+  border-bottom: 1px solid #dedddc;
+}
+
+.register
+  .ant-form-item-label
+  > label.ant-form-item-required:not(.ant-form-item-required-mark-optional):before {
+  display: none;
+}
+
+.register .ant-col-24.ant-form-item-label > label,
+.ant-col-xl-24.ant-form-item-label > label,
+.ant-form-vertical .ant-form-item-label > label {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.135px;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.ant-input {
+  padding: 16px 12px 14px 14px;
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.ant-input-affix-wrapper.ant-input-password {
+  padding: 16px 12px 14px 14px;
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.ant-input-affix-wrapper.ant-input-password #dynamic_rule_password,
+.ant-input-affix-wrapper.ant-input-password #dynamic_rule_passwordConfirm {
+  bottom: 15px;
+  background: transparent;
+  border: none;
+}
+
+.ant-input::placeholder {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  align-items: center;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.ant-radio-inner::after {
+  background-color: #6200ee;
+  border: 1px solid #6200ee;
+}
+
+.ant-btn-primary[disabled],.ant-btn-primary {
+  width: 121px;
+  height: 48px;
+  background: #6200ee;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+
+.ant-btn-primary[disabled] span,.ant-btn-primary span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  align-items: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.ant-btn-primary[disabled]:hover,.ant-btn-primary:hover,.ant-btn-primary:focus{
+	background: #6200ee;
+}

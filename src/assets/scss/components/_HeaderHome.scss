@@ -3,6 +3,7 @@
   margin: 0;
   font-family: "Inter", sans-serif;
 }
+
 .navbar-brand.btn {
   padding: 10px 0px 8px 4px;
 }
@@ -54,14 +55,4 @@
   line-height: 24px;
 
   color: #000000;
-}
-
-.nav-item .row .col-7 .nav-link{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.nav-item .row .col-7 .nav-link:hover{
-  overflow: visible;
 }

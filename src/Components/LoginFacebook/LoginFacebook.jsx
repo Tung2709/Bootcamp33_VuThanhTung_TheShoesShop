@@ -1,5 +1,6 @@
 import React from 'react'
-import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props' 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginFacebook } from '../../redux/productReducer/userReducer';
@@ -21,14 +22,16 @@ export default function LoginFacebook() {
     */
 	  }
   return (
-	<div>
+	<div className='button-fb'>
 		<FacebookLogin
     appId="842869487140861"
     // autoLoad={true}
     fields="name,email,picture"
     // onClick={componentClicked}
     callback={responseFacebook} 
-    render={<button>aaa</button>}
+    // render={<button>aaa</button>}
+    render={renderProps => (
+      <button onClick={renderProps.onClick}><p><i class="fa-brands fa-facebook"></i> Continue with Facebook</p></button>)}
     />
 	</div>
   )

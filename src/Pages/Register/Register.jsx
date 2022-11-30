@@ -1,5 +1,7 @@
-import { Button, Checkbox, Form, Input, Radio } from 'antd';
+import { Button, Form, Input, Radio } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { getUserRegisterApi } from '../../redux/productReducer/userReducer';
 
 /*
 Cách copy component:
@@ -11,11 +13,17 @@ Cách copy component:
 
 const formItemLayout = {
   labelCol: {
-    span: 4,
+    span: 8,
   },
   wrapperCol: {
     span: 8,
   },
+};
+
+const formItemLayoutGender = {
+  labelCol: {
+    span: 8,
+  }
 };
 const formTailLayout = {
   labelCol: {
@@ -28,6 +36,7 @@ const formTailLayout = {
 };
 
 export default function Register() {
+  const dispatch=useDispatch()
   const [form] = Form.useForm();
   const [checkNick, setCheckNick] = useState(false);
   useEffect(() => {
@@ -39,22 +48,32 @@ export default function Register() {
   const onCheck = async () => {
     try {
       const values = await form.validateFields();
-      console.log('Success:', values);
+      console.log('Success:',values);
+      // console.log(checkNick)
     } catch (errorInfo) {
       console.log('Failed:', errorInfo);
     }
   };
+
+  const onFinish= (e)=>{
+    const userData=Object.entries(e)
+    userData.splice(2,1)
+    const userRegister=Object.fromEntries(userData)
+    console.log(userRegister)
+    const action = getUserRegisterApi(userRegister)
+    dispatch(action)
+  }
   return (
-    <div className="container">
-      <Form form={form} name="dynamic_rule" className='container'>
+    <div className="register">
+      <Form form={form} onFinish={onFinish} layout='vertical' name="dynamic_rule" >
         <h3>Register</h3>
-        <br />
         <div className="row">
           <div className="col-6">
             <Form.Item
               {...formItemLayout}
               name="email"
               label="Email"
+              // labelWrap={true}
               rules={[
                 {
                   required: true,
@@ -76,12 +95,12 @@ export default function Register() {
                 },
               ]}
             >
-              <Input placeholder="Please input your password" />
+              <Input.Password placeholder="Please input your password" />
             </Form.Item>
             <Form.Item
               {...formItemLayout}
               name="passwordConfirm"
-              label="PasswordConfirm"
+              label="Password confirm"
               rules={[
                 {
                   required: true,
@@ -97,7 +116,7 @@ export default function Register() {
                 }),
               ]}
             >
-              <Input placeholder="Please input your passwordConfirm" />
+              <Input.Password placeholder="Please input your passwordConfirm" />
             </Form.Item>
           </div>
           <div className="col-6">
@@ -127,7 +146,7 @@ export default function Register() {
             >
               <Input placeholder="Please input your phone" />
             </Form.Item>
-            <Form.Item name="gender" label="Gender" rules={[{ required: true, message: 'Please check an item:' }]}>
+            <Form.Item {...formItemLayoutGender}  layout="horizontal" name="gender" label="Gender" rules={[{ required: true, message: 'Please check an item:' }]}>
               <Radio.Group>
                 <Radio value={true}>Male</Radio>
                 <Radio value={false}>Female</Radio>
@@ -144,7 +163,7 @@ export default function Register() {
                     !!form.getFieldsError().filter(({ errors }) => errors.length).length
                   }
                 >
-                 Register
+                 SUBMIT
                 </Button>
               )}
             </Form.Item>

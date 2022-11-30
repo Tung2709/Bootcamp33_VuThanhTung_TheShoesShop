@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import 'axios'
-import { ACCESS_TOKEN, http, setting, USER_LOGIN, USER_PRODUCTS_FAVORITE, USER_PRODUCTS_ORDER, USER_PRODUCTS_SELECTED } from '../../util/config';
+import { ACCESS_TOKEN, http, setting, USER_LOGIN, USER_PRODUCTS_FAVORITE, USER_PRODUCTS_ORDER, USER_PRODUCTS_SELECTED, USER_PROFILE } from '../../util/config';
+import { history } from "../../index";
 const initialState = {
 	//nếu localStorage có dữ liệu => load dữ liệu default cho state.userLogin của redux, nếu localStorage không có thì gán object {}
 	userLogin: setting.getStorageJSON(USER_LOGIN) ? setting.getStorageJSON(USER_LOGIN) : {},
@@ -8,7 +9,9 @@ const initialState = {
 	userProductsFavorite: setting.getStorage(USER_PRODUCTS_FAVORITE) ? setting.getStorage(USER_PRODUCTS_FAVORITE).split(",") : [],
 	userProductsSelected: setting.getStorageJSON(USER_PRODUCTS_SELECTED) ? setting.getStorageJSON(USER_PRODUCTS_SELECTED) : [],
 	// userProductsOrder: setting.getStorageJSON(USER_PRODUCTS_ORDER) ? setting.getStorageJSON(USER_PRODUCTS_ORDER) : [],
-	userProductsOrder: {},
+	userProductsOrder: setting.getStorageJSON(USER_PRODUCTS_ORDER) ? setting.getStorageJSON(USER_PRODUCTS_ORDER) : [],
+	userRegister:{},
+	userUpdate:{},
 }
 
 const userReducer = createSlice({
@@ -66,10 +69,18 @@ const userReducer = createSlice({
 			state.userProductsSelected = productOrder.filter(item => item.checked !== true)
 			setting.setStorageJSON(USER_PRODUCTS_SELECTED, state.userProductsSelected)
 		}
+		,
+		getUserRegisterAction:(state,action)=>{
+			state.userRegister=action.payload
+		}
+		,
+		getUserUpdateAction:(state,action)=>{
+			state.userUpdate=action.payload
+		}
 	}
 });
 
-export const { loginAction, getProfileAction, getProductFavoriteAction, getProductsSelectedAction, getProductsOrderAction, deleteProductAction } = userReducer.actions
+export const { loginAction, getProfileAction, getProductFavoriteAction, getProductsSelectedAction, getProductsOrderAction, deleteProductAction,getUserRegisterAction,getUserUpdateAction } = userReducer.actions
 
 export default userReducer.reducer
 
@@ -88,6 +99,9 @@ export const loginApi = (userLogin) => {
 		setting.setStorageJSON(USER_LOGIN, result.data.content)
 		setting.setStorage(ACCESS_TOKEN, result.data.content.accessToken)
 		setting.setCookie(ACCESS_TOKEN, result.data.content.accessToken, 30)
+		if(result.data.statusCode===200){
+			history.push('/profile')
+		}
 	}
 }
 // cách 1 truyền navigate để chuyển hướng trang khi chưa đăng nhập
@@ -154,5 +168,25 @@ export const getOrderProductApi = (product) => {
 			const userOrderItemComplete = setting.getStorageJSON(USER_PRODUCTS_ORDER) ? [setting.getStorageJSON(USER_PRODUCTS_ORDER), orderItemComplete]:[orderItemComplete]
 			setting.setStorageJSON(USER_PRODUCTS_ORDER, userOrderItemComplete)
 		}
+	}
+}
+
+// API user register
+
+export const getUserRegisterApi = (data)=>{
+	return async dispatch =>{
+		const result = await http.post('/api/Users/signup',data)
+		const action = getUserRegisterAction(result.data.content)
+		dispatch(action)
+		
+	}
+}
+
+//API user update profile
+export const getUserUpdateProfileApi=(data)=>{
+	return async dispatch =>{
+		const result = await http.post('/api/Users/updateProfile',data)
+		const action=getUserUpdateAction(result.data.content)
+		dispatch(action)
 	}
 }

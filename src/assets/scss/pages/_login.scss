@@ -1,0 +1,144 @@
+.login {
+  background: #ffffff;
+  width: 100%;
+}
+
+.login h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  margin: 60px 95px 27px 96px;
+  padding-bottom: 42px;
+  color: #000000;
+  border-bottom: 1px solid #dedddc;
+}
+
+.login .form-group {
+  margin: 0 auto;
+  width: 443px;
+  display: block;
+}
+
+.login .form-group p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-left: 2px;
+  letter-spacing: 0.135px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.login .form-group #email {
+  align-items: center;
+  padding: 16px 12px 14px 14px;
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 38px;
+}
+
+.login .form-group.password{
+	position: relative;
+}
+
+.login .form-group.password  .fa-eye-slash {
+	position: absolute;
+	left: 400px;
+	bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+  }
+  .login .form-group.password .fa-eye {
+	position: absolute;
+	left: 400px;
+	bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+  }
+
+.login .form-group input::placeholder {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.login .form-group #password {
+  align-items: center;
+  padding: 16px 12px 14px 14px;
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+  margin-bottom: 29px;
+}
+
+.login .form-group .d-flex {
+  margin-bottom: 7px;
+  justify-content: right;
+  align-items: center;
+}
+
+.login .form-group .d-flex .btn {
+  margin-left: 27px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.135px;
+  color: rgba(21, 42, 235, 0.8);
+}
+
+.login .form-group .d-flex .btn.btn-success {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  background: #6200ee;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+
+.login .form-group .button-fb button {
+  width: 442px;
+  height: 63px;
+  background: #1877f2;
+  box-shadow: 0px 38.4869px 71.4756px rgba(0, 0, 0, 0.07);
+  border-radius: 20.9968px;
+  border-style: none;
+  text-align: left;
+  padding-left: 40px;
+}
+
+.login .form-group .button-fb button p {
+  font-family: "ABeeZee";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.login .form-group .button-fb button p i {
+  font-size: 40px;
+  padding-right: 32px;
+}
+

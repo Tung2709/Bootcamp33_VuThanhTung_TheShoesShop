@@ -1,0 +1,125 @@
+.profile {
+  background: #ffffff;
+}
+
+.profile h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  color: #fffefe;
+  width: 575px;
+  height: 74px;
+  line-height: 74px;
+  background: linear-gradient(180deg, #f21299 0%, #1b02b5 100%);
+  margin-top: 47px;
+  //   margin-bottom: 35px;
+  padding-left: 34px;
+}
+
+.profile .row {
+  margin-left: 34px;
+  margin-right: 54px;
+}
+
+.profile .row .col-2 {
+  text-align: center;
+}
+
+.profile .row .col-2 img {
+  width: 225px;
+  border-radius: 50%;
+  margin-top: 35px;
+}
+
+.profile .row .col .row .col-6 .form-group p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.135px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 5px;
+  margin-top: 35px;
+}
+
+.profile .row .col .row .col-6 .form-group .form-control {
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  align-items: center;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.profile .row .col .row .col-6 .form-group .form-check.form-check-inline {
+  margin: 0px;
+  margin-top: 12px;
+}
+
+// .profile
+//   .row
+//   .col
+//   .row
+//   .col-6
+//   .form-group
+//   .form-check.form-check-inline
+//   .form-check-input:focus{
+// 	border-color:#6200EE;
+// 	background-color: #6200EE;
+// 	background: #ffffff;
+//   }
+
+.profile
+  .row
+  .col
+  .row
+  .col-6
+  .form-group
+  .form-check.form-check-inline
+  .form-check-label {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-right: 28px;
+}
+
+.profile
+  .row
+  .col
+  .row
+  .col-6
+  .form-group
+  .form-check.form-check-inline
+  .form-check-label.gender {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.135px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-right: 36px;
+}
+
+.profile .row .col .row .col-6 .form-group button {
+  margin-top: 27px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fffefe;
+  padding: 12px 29px;
+  background: #6200ee;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
