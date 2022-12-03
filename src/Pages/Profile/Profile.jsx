@@ -6,18 +6,27 @@ import { getProfileApi, getUserUpdateProfileApi } from '../../redux/productReduc
 import { Tabs } from 'antd';
 import { Pagination } from 'antd';
 import { getProductApi } from '../../redux/productReducer/productReducer'
+import { setting, USER_PROFILE } from '../../util/config'
 const onChangeTab = (key) => {
   console.log(key);
 };
 export default function Profile() {
-  const { userProfile, userProductsFavorite, userProductsOrder, } = useSelector(state => state.userReducer)
+  const { userProfile, userProductsFavorite } = useSelector(state => state.userReducer)
   const { arrProduct } = useSelector(state => state.productReducer)
-  const [data, setData] = useState()
+  const productFavorite=arrProduct.filter(item=>userProductsFavorite.includes(item.id.toString()))
+  //tổng sô trang hiển thị
+  const profileData= setting.getStorageJSON(USER_PROFILE)
+  // const totalPage=userProfile.ordersHistory?.length
+  //dữ liệu hiển thị trong trang
+  const [source,setSource]=useState()
+  const [data, setData] = useState({})
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
-    console.log(page);
     setCurrent(page);
+    // setSource(userProfile.ordersHistory?.slice(2*page-2,page*2))
+    setSource(profileData.ordersHistory.slice(2*page-2,page*2))
   };
+
   const dispatch = useDispatch();
   useEffect(() => {
     //gọi api get profile
@@ -26,6 +35,7 @@ export default function Profile() {
     //gọi api get arrpoduct
     const action = getProductApi();
     dispatch(action);
+    onChange(current)
   }, [])
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -97,56 +107,74 @@ export default function Profile() {
                 label: `Order history`,
                 key: id,
                 children: (<div>
-                  {userProductsOrder.map((item, index) => {
-                    return <table className='table' key={index}>
-                      <thead>
+                  <table className='table'>
+                    <thead>
+                      <tr>
+                        <th style={{ width: '5%' }}>id</th>
+                        <th style={{ width: '10%', textAlign: 'center' }}>img</th>
+                        <th style={{ width: '25%' }}>name</th>
+                        <th style={{ width: '5%' }}>price</th>
+                        <th style={{ width: '20%', textAlign: 'center' }}>quantity</th>
+                        <th style={{ width: '10%' }}>total</th>
+                      </tr>
+                    </thead>
+                    {source?.map((prod, index) => {
+                      return (prod.orderDetail.map((item,i)=>{
+                        return <tbody key={i}>
                         <tr>
-                          <th style={{ width: '5%' }}>id</th>
-                          <th style={{ width: '10%', textAlign: 'center' }}>img</th>
-                          <th style={{ width: '25%' }}>name</th>
-                          <th style={{ width: '5%' }}>price</th>
-                          <th style={{ width: '20%', textAlign: 'center' }}>quantity</th>
-                          <th style={{ width: '10%' }}>total</th>
+                          <td >{prod.id}</td>
+                          <td style={{ textAlign: 'center' }}><img style={{width:'100px'}} src={item.image} alt="..." /></td>
+                          <td>{item.name}</td>
+                          <td>{item.price}</td>
+                          <td style={{ textAlign: 'center' }}>
+                            <span> {item.quantity}</span>
+                          </td>
+                          <td>{item.price * item.quantity}</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {arrProduct.filter(prod => prod.id === Number(item.productId)).map((prod, index) => {
-                        return <tr>
-                          <tr>
-                          <th style={{ width: '5%' }}>id</th>
-                          <th style={{ width: '10%', textAlign: 'center' }}>img</th>
-                          <th style={{ width: '25%' }}>name</th>
-                          <th style={{ width: '5%' }}>price</th>
-                          <th style={{ width: '20%', textAlign: 'center' }}>quantity</th>
-                          <th style={{ width: '10%' }}>total</th>
-                        </tr>
-                        </tr>
-                          // return <tr key={index}>
-                          //   <td >{prod.id}</td>
-                          //   <td style={{ textAlign: 'center' }}><img src={prod.image} alt="..." /></td>
-                          //   <td>{prod.name}</td>
-                          //   <td>{prod.price}</td>
-                          //   <td style={{ textAlign: 'center' }}>
-                          //     <span> {prod.quantity}</span>
-                          //   </td>
-                          //   <td>{prod.price * prod.quantity}</td>
-                          // </tr>
-                        })}
                       </tbody>
-                    </table>
-                  })}
+                      }))
+                    })}
+                  </table>
+                  <Pagination current={current} onChange={onChange} defaultPageSize={2} total={userProfile.ordersHistory?.length} />
                 </div>),
               };
             } else {
               return {
                 label: `Favourite`,
                 key: id,
-                children: `Content of Tab Pane ${id}`,
+                children: (
+                  <div>
+                    <table className="table">
+                    <thead>
+                      <tr>
+                        <th style={{ width: '5%' }}>id</th>
+                        <th style={{ width: '10%', textAlign: 'center' }}>img</th>
+                        <th style={{ width: '25%' }}>name</th>
+                        <th style={{ width: '5%' }}>price</th>
+                        <th style={{ width: '20%', textAlign: 'center' }}>quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {productFavorite?.map((prod, index) => {
+                        return <tr key={index}>
+                          <td >{prod.id}</td>
+                          <td style={{ textAlign: 'center' }}><img src={prod.image} alt="..." /></td>
+                          <td>{prod.name}</td>
+                          <td>{prod.price}</td>
+                          <td>{prod.quantity}</td>
+                        </tr>
+                      })}
+                    </tbody>
+                  </table>
+                  <Pagination current={current} onChange={onChange} defaultPageSize={5} total={productFavorite.length} />
+                  </div>
+                ),
               };
             }
           })}
+
         />
-        <Pagination current={current} onChange={onChange} defaultPageSize={10} total={50} />
+        
       </div>
     </div>
   )

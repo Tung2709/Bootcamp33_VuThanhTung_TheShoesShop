@@ -5,7 +5,7 @@ import { deleteProductAction, getOrderProductApi, getProductsOrderAction, getPro
 export default function Cart() {
   const dispatch = useDispatch();
   const { userProductsSelected } = useSelector(state => state.userReducer)
-  const [checkedAll, setCheckedAll] = useState(userProductsSelected.filter(item=>item.checked===false).length===0?true:false)
+  const [checkedAll, setCheckedAll] = useState(userProductsSelected.filter(item => item.checked === false).length === 0 ? true : false)
   const [checked, setChecked] = useState(new Array(userProductsSelected.length).fill(false))
   useEffect(() => {
     //gọi api get profile
@@ -62,24 +62,27 @@ export default function Cart() {
     dispatch(action)
   }
   const orderProduct = () => {
-    const action = getOrderProductApi(userProductsSelected)
-    dispatch(action)
+    if (checked.includes(true)) {
+      const action = getOrderProductApi(userProductsSelected)
+      dispatch(action)
+    }
+    console.log('không có sản phẩm được chọn')
   }
   return (
     <div className='cart-item'>
       <h2>Cart</h2>
       <hr />
-      <table className='table'>
+      <table className={ `table ${userProductsSelected.length>0?void(0):'d-none'}`}>
         <thead>
           <tr>
-            <th style={{width:'5%'}}><input className="form-check-input" type="checkbox" value="" checked={checkedAll} onChange={handleSelectAll} /></th>
-            <th style={{width:'5%'}}>id</th>
-            <th style={{width:'10%', textAlign:'center'}}>img</th>
-            <th style={{width:'25%'}}>name</th>
-            <th style={{width:'5%'}}>price</th>
-            <th style={{width:'20%', textAlign:'center'}}>quantity</th>
-            <th style={{width:'10%'}}>total</th>
-            <th style={{width:'20%', textAlign:'center'}}>action</th>
+            <th style={{ width: '5%' }}><input className="form-check-input" type="checkbox" disabled={userProductsSelected.length>0?false:true} value="" checked={userProductsSelected.length>0?checkedAll:false} onChange={handleSelectAll} /></th>
+            <th style={{ width: '5%' }}>id</th>
+            <th style={{ width: '10%', textAlign: 'center' }}>img</th>
+            <th style={{ width: '25%' }}>name</th>
+            <th style={{ width: '5%' }}>price</th>
+            <th style={{ width: '20%', textAlign: 'center' }}>quantity</th>
+            <th style={{ width: '10%' }}>total</th>
+            <th style={{ width: '20%', textAlign: 'center' }}>action</th>
           </tr>
         </thead>
         <tbody>
@@ -87,15 +90,15 @@ export default function Cart() {
             return <tr key={index}>
               <td><input className="form-check-input" name={index} type="checkbox" value="" checked={prod.checked} onChange={handleSelect} /></td>
               <td >{prod.id}</td>
-              <td style={{textAlign:'center'}}><img  src={prod.image} alt="..." /></td>
+              <td style={{ textAlign: 'center' }}><img src={prod.image} alt="..." /></td>
               <td>{prod.name}</td>
               <td>{prod.price}</td>
-              <td style={{textAlign:'center'}}><div className="btn quantity" onClick={() => { quantityItem({ ...prod }, 1) }}>+</div>
+              <td style={{ textAlign: 'center' }}><div className="btn quantity" onClick={() => { quantityItem({ ...prod }, 1) }}>+</div>
                 <span> {prod.quantity}</span>
                 <div className="btn quantity" onClick={prod.quantity > 1 ? () => { quantityItem({ ...prod }, -1) } : null}>-</div>
               </td>
               <td>{prod.price * prod.quantity}</td>
-              <td style={{textAlign:'center'}}>
+              <td style={{ textAlign: 'center' }}>
                 <div className="btn edit">EDIT</div>
                 <div className="btn del" onClick={() => { deleteItem(prod.id) }}>DELETE</div>
               </td>

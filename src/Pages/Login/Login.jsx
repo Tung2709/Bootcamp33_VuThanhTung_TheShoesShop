@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginApi } from '../../redux/productReducer/userReducer'
 import LoginFacebook from "../../Components/LoginFacebook/LoginFacebook";
 import { NavLink } from 'react-router-dom'
 export default function Login() {
+  const { userProfile } = useSelector(state => state.userReducer)
   const dispatch = useDispatch()
   const[type,settype]=useState(false);
   const[eye,seteye]=useState(true);

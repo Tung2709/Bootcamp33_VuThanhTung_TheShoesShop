@@ -24,6 +24,7 @@ const userReducer = createSlice({
 		},
 		getProfileAction: (state, action) => {
 			state.userProfile = action.payload;
+			setting.setStorageJSON(USER_PROFILE,state.userProfile)
 		}
 		,
 		getProductFavoriteAction: (state, action) => {
