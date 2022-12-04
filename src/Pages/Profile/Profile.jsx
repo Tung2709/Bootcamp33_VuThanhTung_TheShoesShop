@@ -24,7 +24,7 @@ export default function Profile() {
   const onChange = (page) => {
     setCurrent(page);
     // setSource(userProfile.ordersHistory?.slice(2*page-2,page*2))
-    setSource(profileData.ordersHistory.slice(2*page-2,page*2))
+    setSource(profileData.ordersHistory?.slice(2*page-2,page*2))
   };
 
   const dispatch = useDispatch();
