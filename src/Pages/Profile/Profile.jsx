@@ -147,18 +147,18 @@ export default function Profile() {
                     <table className="table">
                     <thead>
                       <tr>
-                        <th style={{ width: '5%' }}>id</th>
-                        <th style={{ width: '10%', textAlign: 'center' }}>img</th>
-                        <th style={{ width: '25%' }}>name</th>
-                        <th style={{ width: '5%' }}>price</th>
-                        <th style={{ width: '20%', textAlign: 'center' }}>quantity</th>
+                        <th style={{ width: '10%' }}>id</th>
+                        <th style={{ width: '20%', textAlign: 'center' }}>img</th>
+                        <th style={{ width: '40%' }}>name</th>
+                        <th style={{ width: '15%' }}>price</th>
+                        <th style={{ width: '15%'}}>quantity</th>
                       </tr>
                     </thead>
                     <tbody>
                       {productFavorite?.map((prod, index) => {
                         return <tr key={index}>
                           <td >{prod.id}</td>
-                          <td style={{ textAlign: 'center' }}><img src={prod.image} alt="..." /></td>
+                          <td style={{ textAlign: 'center' }}><img style={{width:"100px"}} src={prod.image} alt="..." /></td>
                           <td>{prod.name}</td>
                           <td>{prod.price}</td>
                           <td>{prod.quantity}</td>
